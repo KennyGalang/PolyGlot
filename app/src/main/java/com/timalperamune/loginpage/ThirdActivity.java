@@ -72,10 +72,10 @@ public class ThirdActivity extends AppCompatActivity {
 
         Thread thread = new Thread() {
             public void run() {
-                Log.i("RESPNSE", "WOW");
-                try {
 
-                    String textResponse = getJSONObjectFromURL("https://www.videoindexer.ai/Api/Widget/Breakdowns/7d38f0ade8/7d38f0ade8/Vtt?language=" + SecondActivity.TEXT);
+                try {
+                    Log.i("RESPNSE", "WOW");
+                    String textResponse = getJSONObjectFromURL("https://www.videoindexer.ai/Api/Widget/Breakdowns/7d38f0ade8/7d38f0ade8/Vtt?language="+SecondActivity.TEXT);
                     List<String> sentences = new ArrayList<>();
                     transcript_map = new HashMap<>();
                     String[] tokens = textResponse.toString().split("\n");
@@ -86,7 +86,7 @@ public class ThirdActivity extends AppCompatActivity {
                     String[] time_stamps = textResponse.toString().split("\n");
                     for (int i = 2; i < time_stamps.length; i += 3) {
                         String[] first_time_stamp = time_stamps[i].split("-->");
-                        transcript_map.put(first_time_stamp[0], sentences.get(arrayList_index));
+                        transcript_map.put(first_time_stamp[0].substring(3,first_time_stamp[0].length() - 3), sentences.get(arrayList_index));
                         arrayList_index++;
 
                     }
@@ -228,8 +228,9 @@ public class ThirdActivity extends AppCompatActivity {
 
 //        try {
 //            Thread.currentThread().join();
-            Log.i("TIMER THREAD", "HMM?");
-            this.runOnUiThread(generate);
+//            Log.i("TIMER THREAD", "HMM?");
+            Log.i("CURRENT TIME IS ??", current_time);
+            runOnUiThread(generate);
 
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
@@ -274,7 +275,7 @@ public class ThirdActivity extends AppCompatActivity {
             }
 //            System.out.println(current_time + "- is equal to-00:12:9");
             if (transcript_map.containsKey(current_time)) {
-//                Log.i("AM I EVEN ", "FUCKING HEREEEEE")
+                Log.i("AM I EVEN ", "FUCKING HEREEEEHEHEHEHEHEHEHEHEE")
                 ;
                 speakOut();
             }
