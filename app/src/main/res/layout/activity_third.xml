@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorG"
     android:layout_height="match_parent"
     tools:context="com.timalperamune.loginpage.ThirdActivity">
 
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:text="Play"
+        style="@style/button_style"
+        android:text="PLAY"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="460dp" />
 
@@ -23,6 +25,7 @@
         android:layout_alignBaseline="@+id/resume"
         android:layout_alignBottom="@+id/resume"
         android:layout_alignParentEnd="true"
+        style="@style/button_style"
         android:text="||"
         android:textSize="30sp"
         tools:layout_editor_absoluteX="148dp"
@@ -34,10 +37,10 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        style="@style/button_style"
         android:text="▻"
         android:textSize="30sp"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
     <LinearLayout
         android:layout_width="400dp"
@@ -63,7 +66,7 @@
         android:layout_alignBaseline="@+id/resume"
         android:layout_alignBottom="@+id/resume"
         android:layout_centerHorizontal="true"
-        android:text="TextView"
+        android:text="00:00.0"
         android:textSize="30sp" />
 
 

@@ -133,7 +133,7 @@ public class ThirdActivity extends AppCompatActivity {
                 videoView.setOnPreparedListener(PreparedListener);
                 videoView.requestFocus();
                 videoView.start();
-                SystemClock.sleep(2000);
+                SystemClock.sleep(1000);
 //                speakOut();
 
 
@@ -256,7 +256,7 @@ public class ThirdActivity extends AppCompatActivity {
             if (seconds < 10) {
                 tempSec = "0" + tempSec;
             }
-            current_time = tempMin + ":" + tempSec + ":" + mCount;
+            current_time = tempMin + ":" + tempSec + "." + mCount;
 
             timeflg.setText(current_time);
 
