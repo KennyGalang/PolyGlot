@@ -157,7 +157,26 @@ public class ThirdActivity extends AppCompatActivity {
 
             }
         });
+        button_pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                videoView.pause();
+//                running = false;
+                button_resume.setVisibility(View.VISIBLE);
+                button_pause.setVisibility(View.INVISIBLE);
 
+                onPause();
+            }
+        });
+        button_resume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                running = true;
+                button_resume.setVisibility(View.INVISIBLE);
+                button_pause.setVisibility(View.VISIBLE);
+                onResume();
+            }
+        });
 
     }
 
@@ -275,8 +294,7 @@ public class ThirdActivity extends AppCompatActivity {
             }
 //            System.out.println(current_time + "- is equal to-00:12:9");
             if (transcript_map.containsKey(current_time)) {
-                Log.i("AM I EVEN ", "FUCKING HEREEEEHEHEHEHEHEHEHEHEE")
-                ;
+
                 speakOut();
             }
 
@@ -333,6 +351,33 @@ public class ThirdActivity extends AppCompatActivity {
         Toast.makeText(this, toSpeak, Toast.LENGTH_SHORT).show();
         String utteranceId = UUID.randomUUID().toString();
         textToSpeech.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+
+    }
+    @Override
+    public void onPause() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        Log.d("Hello", "onPause called");
+        super.onPause();
+        stopPosition = videoView.getCurrentPosition(); //stopPosition is an int
+        videoView.pause();
+        try {
+            timer.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void onResume(){
+        super.onResume();
+
+        videoView.seekTo(stopPosition);
+        videoView.start();
+
+
 
     }
 
