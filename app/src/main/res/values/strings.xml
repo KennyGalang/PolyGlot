@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">LoginPage</string>
+    <string-array name="names">
+        <item>English</item>
+        <item>Italian</item>
+        <item>German</item>
+        <item>Chinese</item>
+        <item>French</item>
+        <item>Japanese</item>
+
+
+    </string-array>
+
 </resources>
